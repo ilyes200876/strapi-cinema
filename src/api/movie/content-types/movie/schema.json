@@ -24,6 +24,15 @@
     },
     "director": {
       "type": "string"
+    },
+    "actors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::actor.actor",
+      "mappedBy": "movies"
+    },
+    "id_movie": {
+      "type": "uid"
     }
   }
 }

@@ -24,6 +24,12 @@
     },
     "id_actor": {
       "type": "uid"
+    },
+    "movies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::movie.movie",
+      "inversedBy": "actors"
     }
   }
 }

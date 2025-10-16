@@ -451,6 +451,7 @@ export interface ApiActorActor extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::actor.actor'> &
       Schema.Attribute.Private;
+    movies: Schema.Attribute.Relation<'manyToMany', 'api::movie.movie'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -469,11 +470,13 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    actors: Schema.Attribute.Relation<'manyToMany', 'api::actor.actor'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     director: Schema.Attribute.String;
+    id_movie: Schema.Attribute.UID;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::movie.movie'> &
       Schema.Attribute.Private;
