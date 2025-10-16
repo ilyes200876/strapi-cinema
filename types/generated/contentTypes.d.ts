@@ -430,6 +430,13 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
+  collectionName: 'movies';
+  info: {
+    displayName: 'Movie';
+    pluralName: 'movies';
+    singularName: 'movie';
+    
 export interface ApiActorActor extends Struct.CollectionTypeSchema {
   collectionName: 'actors';
   info: {
@@ -441,6 +448,19 @@ export interface ApiActorActor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    director: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::movie.movie'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    release_date: Schema.Attribute.Date;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     birth_date: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -968,6 +988,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::movie.movie': ApiMovieMovie;
       'api::actor.actor': ApiActorActor;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
