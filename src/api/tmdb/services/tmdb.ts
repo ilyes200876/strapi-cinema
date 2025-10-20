@@ -30,7 +30,7 @@ export default () => ({
             poster_path: movie.poster_path,
             vote_average: movie.vote_average,
             description: movie.description,
-            tmdb_id: movie.id,
+            id_movie: String(movie.id),
           },
         });
       }
@@ -79,7 +79,7 @@ export default () => ({
             // birth_date: actor.birth_date,
             // poster_path: movie.poster_path,
             // vote_average: movie.vote_average,
-            tmdb_id: actor.id,
+            id_actor: String(actor.id),
           },
         });
         console.log(`le nom de l'acteur est ${actor.name}`);
