@@ -1,4 +1,5 @@
 import type { TMDBMoviesResponse } from '../type/tmdb';
+import type { TMDBActorsResponse } from '../type/tmdb';
 
 export default () => ({
   async getPopularMovies() {
@@ -28,12 +29,14 @@ export default () => ({
             release_date: movie.release_date,
             poster_path: movie.poster_path,
             vote_average: movie.vote_average,
+            description: movie.description,
             tmdb_id: movie.id,
           },
         });
       }
     }
 
+    console.log('✅ Import acteur terminé');
     return { message: 'Movies imported successfully', count: results.length };
   },
   
@@ -44,6 +47,45 @@ export default () => ({
     const response = await fetch(url);
     const data = await response.json();
     return data;
+  },
+
+  async getPopularActors(){
+    const apiKey = process.env.TMDB_API_KEY;
+    const url = `https://api.themoviedb.org/3/person/popular?api_key=${apiKey}&language=fr-FR`;
+    const response = await fetch(url);
+    const { results } = await response.json() as TMDBActorsResponse;
+    // return data; 
+    // console.log('TMDB API response:', data);
+
+    // const results = data.results;
+
+    if (!results || !Array.isArray(results)) {
+      throw new Error('TMDB API response does not contain a valid "results" array.');
+    }
+
+    for (const actor of results) {
+      const existing = await strapi.entityService.findMany('api::actor.actor', {
+        filters: { id_actor: String(actor.id) },
+      });
+
+      if (existing.length === 0) {
+        const fullName = actor.name.split(' ');
+        const first_name = fullName.slice(0, -1).join(' ');
+        const last_name = fullName.slice(-1).join('');
+        await strapi.entityService.create('api::actor.actor', {
+          data: {
+            first_name,
+            last_name,
+            // birth_date: actor.birth_date,
+            // poster_path: movie.poster_path,
+            // vote_average: movie.vote_average,
+            tmdb_id: actor.id,
+          },
+        });
+      }
+    }
+
+    return { message: 'Actors imported successfully', count: results.length };
   },
 
   async searchActors(query: string) {

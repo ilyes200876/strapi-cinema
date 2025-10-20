@@ -10,6 +10,14 @@ export default {
     },
     {
       method: 'GET',
+      path: '/tmdb/actors',
+      handler: 'tmdb.getPopularActors',
+      config: {
+        auth: false, 
+      },
+    },
+    {
+      method: 'GET',
       path: '/tmdb/movies/:id',
       handler: 'tmdb.getMovieDetails',
       config: {
@@ -18,7 +26,7 @@ export default {
     },
     {
       method: 'GET',
-      path: '/tmdb/actors',
+      path: '/tmdb/actor',
       handler: 'tmdb.searchActors',
       config: {
         auth: false,
