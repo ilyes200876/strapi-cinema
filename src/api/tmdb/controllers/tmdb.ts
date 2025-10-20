@@ -5,7 +5,7 @@ export default ({ strapi }: { strapi: any }) => ({
   },
 
   async getPopularActors(ctx: any) {
-    const data = await strapi.service('api::tmdb.tmdb').getPopulactors();
+    const data = await strapi.service('api::tmdb.tmdb').getPopularActors();
     ctx.body = data; 
   },
 

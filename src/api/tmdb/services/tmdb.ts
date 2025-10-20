@@ -36,7 +36,7 @@ export default () => ({
       }
     }
 
-    console.log('✅ Import acteur terminé');
+    console.log('✅ Import movie terminé');
     return { message: 'Movies imported successfully', count: results.length };
   },
   
@@ -82,8 +82,10 @@ export default () => ({
             tmdb_id: actor.id,
           },
         });
+        console.log(`le nom de l'acteur est ${actor.name}`);
       }
     }
+    console.log("import acteur réussi");
 
     return { message: 'Actors imported successfully', count: results.length };
   },
