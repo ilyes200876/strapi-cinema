@@ -1,6 +1,15 @@
 export default [
   'strapi::logger',
   'strapi::errors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: ['http://localhost:5173'], // front Vite
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      keepHeaderOnError: true,
+    },
+  },
   'strapi::security',
   'strapi::cors',
   'strapi::poweredBy',
