@@ -2,16 +2,16 @@ export default {
   routes: [
     {
       method: 'GET',
-      path: '/tmdb/movies',
-      handler: 'tmdb.getPopularMovies',
+      path: '/tmdb/movies/update',
+      handler: 'tmdb.getPopularMoviesBdd',
       config: {
         auth: false, 
       },
     },
     {
       method: 'GET',
-      path: '/tmdb/actors',
-      handler: 'tmdb.getPopularActors',
+      path: '/tmdb/actors/update',
+      handler: 'tmdb.getPopularActorsBdd',
       config: {
         auth: false, 
       },

@@ -474,12 +474,12 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
     director: Schema.Attribute.String;
     id_movie: Schema.Attribute.UID;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::movie.movie'> &
       Schema.Attribute.Private;
+    overview: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     release_date: Schema.Attribute.Date;
     title: Schema.Attribute.String & Schema.Attribute.Required;

@@ -16,7 +16,7 @@
       "required": true,
       "unique": false
     },
-    "description": {
+    "overview": {
       "type": "text"
     },
     "release_date": {

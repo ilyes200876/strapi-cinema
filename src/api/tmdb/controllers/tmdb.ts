@@ -1,11 +1,11 @@
 export default ({ strapi }: { strapi: any }) => ({
-  async getPopularMovies(ctx: any) {
-    const data = await strapi.service('api::tmdb.tmdb').getPopularMovies();
+  async getPopularMoviesBdd(ctx: any) {
+    const data = await strapi.service('api::tmdb.tmdb').getPopularMoviesBdd();
     ctx.body = data; 
   },
 
-  async getPopularActors(ctx: any) {
-    const data = await strapi.service('api::tmdb.tmdb').getPopularActors();
+  async getPopularActorsBdd(ctx: any) {
+    const data = await strapi.service('api::tmdb.tmdb').getPopularActorsBdd();
     ctx.body = data; 
   },
 
