@@ -5,7 +5,6 @@ export interface TMDBMovie {
   release_date: string;
   poster_path: string | null;
   vote_average: number;
-  description: string;
 }
 
 export interface TMDBMoviesResponse {
