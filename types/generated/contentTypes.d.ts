@@ -480,6 +480,7 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::movie.movie'> &
       Schema.Attribute.Private;
     overview: Schema.Attribute.Text;
+    poster_path: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     release_date: Schema.Attribute.Date;
     title: Schema.Attribute.String & Schema.Attribute.Required;
