@@ -2,7 +2,7 @@ import type { TMDBMoviesResponse } from '../type/tmdb';
 import type { TMDBActorsResponse } from '../type/tmdb';
 
 export default () => ({
-  async getPopularMovies() {
+  async getPopularMoviesBdd() {
     const apiKey = process.env.TMDB_API_KEY;
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr-FR`;
     const response = await fetch(url);
@@ -36,7 +36,7 @@ export default () => ({
       }
     }
 
-    console.log('✅ Import movie terminé');
+    
     return { message: 'Movies imported successfully', count: results.length };
   },
   
@@ -49,7 +49,7 @@ export default () => ({
     return data;
   },
 
-  async getPopularActors(){
+  async getPopularActorsBdd(){
     const apiKey = process.env.TMDB_API_KEY;
     const url = `https://api.themoviedb.org/3/person/popular?api_key=${apiKey}&language=fr-FR`;
     const response = await fetch(url);
@@ -82,10 +82,8 @@ export default () => ({
             id_actor: String(actor.id),
           },
         });
-        console.log(`le nom de l'acteur est ${actor.name}`);
       }
     }
-    console.log("import acteur réussi");
 
     return { message: 'Actors imported successfully', count: results.length };
   },
