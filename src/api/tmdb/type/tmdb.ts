@@ -28,6 +28,7 @@ export interface TMDBActorDetails {
   biography: string;
   place_of_birth: string | null;
   deathday: string | null;
+  gender: number;
 }
 
 export interface TMDBActorsResponse {
@@ -37,6 +38,19 @@ export interface TMDBActorsResponse {
 export interface TMDBGenre {
   id: number;
   name: string;
+}
+
+export interface TMDBMovieDetails {
+  genres: { id: number; name: string }[];
+}
+
+export interface TMDBCreditsResponse {
+  cast: {
+    id: number;
+    name: string;
+    character: string;
+    profile_path: string;
+  }[];
 }
 
 export interface TMDBGenresResponse {

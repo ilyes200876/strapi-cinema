@@ -28,6 +28,15 @@ export default {
 
     {
       method: 'GET',
+      path: '/tmdb/link-movies',
+      handler: 'tmdb.linkMoviesWithActorsAndGenres',
+      config: {
+        auth: false,
+      },
+    },
+
+    {
+      method: 'GET',
       path: '/tmdb/movies/:id',
       handler: 'tmdb.getMovieDetails',
       config: {
