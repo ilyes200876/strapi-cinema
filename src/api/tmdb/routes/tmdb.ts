@@ -16,6 +16,16 @@ export default {
         auth: false, 
       },
     },
+
+    {
+      method: 'GET',
+      path: '/tmdb/genres/update',
+      handler: 'tmdb.getGenresBdd',
+      config: {
+        auth: false, 
+      },
+    },
+
     {
       method: 'GET',
       path: '/tmdb/movies/:id',

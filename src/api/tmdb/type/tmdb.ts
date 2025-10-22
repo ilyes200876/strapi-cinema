@@ -15,11 +15,30 @@ export interface TMDBMoviesResponse {
 export interface TMDBActor {
   id: number;
   name: string;
-//   birth_date: string;
+  birthday: string;
   profile_path: string | null;
+  gender: number;
   popularity: number;
+}
+
+export interface TMDBActorDetails {
+
+
+  birthday: string | null;
+  biography: string;
+  place_of_birth: string | null;
+  deathday: string | null;
 }
 
 export interface TMDBActorsResponse {
   results: TMDBActor[];
+}
+
+export interface TMDBGenre {
+  id: number;
+  name: string;
+}
+
+export interface TMDBGenresResponse {
+  genres: TMDBGenre[];
 }
