@@ -14,6 +14,11 @@ export default ({ strapi }: { strapi: any }) => ({
     ctx.body = data; 
   },
 
+  async linkMoviesWithActorsAndGenres(ctx: any) {
+    const data = await strapi.service('api::tmdb.tmdb').linkMoviesWithActorsAndGenres();
+    ctx.body = data; 
+  },
+
   async getMovieDetails(ctx: any) {
     const { id } = ctx.params;
     const data = await strapi.service('api::tmdb.tmdb').getMovieDetails(id);
