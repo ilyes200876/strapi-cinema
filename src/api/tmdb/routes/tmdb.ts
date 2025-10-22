@@ -5,7 +5,7 @@ export default {
       path: '/tmdb/movies/update',
       handler: 'tmdb.getPopularMoviesBdd',
       config: {
-        auth: false, 
+        policies: ['admin::isAuthenticatedAdmin'], 
       },
     },
     {
@@ -13,7 +13,9 @@ export default {
       path: '/tmdb/actors/update',
       handler: 'tmdb.getPopularActorsBdd',
       config: {
-        auth: false, 
+        find: {
+      policies: ['admin::isAuthenticatedAdmin'],
+    },
       },
     },
 
@@ -22,7 +24,7 @@ export default {
       path: '/tmdb/genres/update',
       handler: 'tmdb.getGenresBdd',
       config: {
-        auth: false, 
+        policies: ['admin::isAuthenticatedAdmin'],
       },
     },
 
@@ -31,7 +33,7 @@ export default {
       path: '/tmdb/link-movies',
       handler: 'tmdb.linkMoviesWithActorsAndGenres',
       config: {
-        auth: false,
+        policies: ['admin::isAuthenticatedAdmin'],
       },
     },
 
@@ -40,7 +42,7 @@ export default {
       path: '/tmdb/movies/:id',
       handler: 'tmdb.getMovieDetails',
       config: {
-        auth: false,
+        policies: ['admin::isAuthenticatedAdmin'],
       },
     },
     {
@@ -48,7 +50,7 @@ export default {
       path: '/tmdb/actor',
       handler: 'tmdb.searchActors',
       config: {
-        auth: false,
+        policies: ['admin::isAuthenticatedAdmin'],
       },
     },
   ],
