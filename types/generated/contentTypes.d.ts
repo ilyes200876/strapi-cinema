@@ -441,17 +441,49 @@ export interface ApiActorActor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    birth_date: Schema.Attribute.Date;
+    biography: Schema.Attribute.Text;
+    birthday: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    deathday: Schema.Attribute.Date;
     first_name: Schema.Attribute.String & Schema.Attribute.Required;
+    gender: Schema.Attribute.Integer;
     id_actor: Schema.Attribute.UID;
     last_name: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::actor.actor'> &
       Schema.Attribute.Private;
     movies: Schema.Attribute.Relation<'manyToMany', 'api::movie.movie'>;
+    place_of_birth: Schema.Attribute.String;
+    profile_path: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGenreGenre extends Struct.CollectionTypeSchema {
+  collectionName: 'genres';
+  info: {
+    displayName: 'Genre';
+    pluralName: 'genres';
+    singularName: 'genre';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    id_genre: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::genre.genre'> &
+      Schema.Attribute.Private;
+    movies: Schema.Attribute.Relation<'manyToMany', 'api::movie.movie'>;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -475,6 +507,7 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     director: Schema.Attribute.String;
+    genres: Schema.Attribute.Relation<'manyToMany', 'api::genre.genre'>;
     id_movie: Schema.Attribute.UID;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::movie.movie'> &
@@ -487,6 +520,7 @@ export interface ApiMovieMovie extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    vote_average: Schema.Attribute.Decimal;
   };
 }
 
@@ -1001,6 +1035,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::actor.actor': ApiActorActor;
+      'api::genre.genre': ApiGenreGenre;
       'api::movie.movie': ApiMovieMovie;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

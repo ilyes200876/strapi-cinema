@@ -19,9 +19,6 @@
       "type": "string",
       "required": true
     },
-    "birth_date": {
-      "type": "date"
-    },
     "id_actor": {
       "type": "uid"
     },
@@ -30,6 +27,24 @@
       "relation": "manyToMany",
       "target": "api::movie.movie",
       "inversedBy": "actors"
+    },
+    "profile_path": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "integer"
+    },
+    "deathday": {
+      "type": "date"
+    },
+    "place_of_birth": {
+      "type": "string"
+    },
+    "biography": {
+      "type": "text"
+    },
+    "birthday": {
+      "type": "date"
     }
   }
 }

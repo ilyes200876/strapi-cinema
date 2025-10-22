@@ -36,6 +36,15 @@
     },
     "poster_path": {
       "type": "string"
+    },
+    "genres": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::genre.genre",
+      "mappedBy": "movies"
+    },
+    "vote_average": {
+      "type": "decimal"
     }
   }
 }
