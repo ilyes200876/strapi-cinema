@@ -450,6 +450,7 @@ export interface ApiActorActor extends Struct.CollectionTypeSchema {
     first_name: Schema.Attribute.String & Schema.Attribute.Required;
     gender: Schema.Attribute.Integer;
     id_actor: Schema.Attribute.UID;
+    known_for_department: Schema.Attribute.String;
     last_name: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::actor.actor'> &

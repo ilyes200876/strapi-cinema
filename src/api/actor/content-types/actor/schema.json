@@ -45,6 +45,9 @@
     },
     "birthday": {
       "type": "date"
+    },
+    "known_for_department": {
+      "type": "string"
     }
   }
 }

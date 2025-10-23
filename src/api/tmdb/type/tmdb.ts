@@ -19,6 +19,7 @@ export interface TMDBActor {
   profile_path: string | null;
   gender: number;
   popularity: number;
+  known_for_department: string;
 }
 
 export interface TMDBActorDetails {

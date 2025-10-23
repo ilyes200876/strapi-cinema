@@ -96,6 +96,7 @@ export default () => ({
             biography: actorDetails.biography,
             profile_path: actor.profile_path,
             gender: actor.gender,
+            known_for_department: actor.known_for_department,
             // vote_average: movie.vote_average,
             id_actor: String(actor.id),
           },
@@ -137,7 +138,7 @@ export default () => ({
       }
     }
 
-    return { message: 'Actors imported successfully', count: genres.length };
+    return { message: 'Genres imported successfully', count: genres.length };
   },
 
   async linkMoviesWithActorsAndGenres() {
@@ -162,7 +163,7 @@ export default () => ({
       );
       const credits = (await creditsRes.json()) as TMDBCreditsResponse;
 
-      const mainActors = Array.isArray(credits.cast) ? credits.cast.slice(0, 20) : [];
+      const mainActors = Array.isArray(credits.cast) ? credits.cast.slice(0, 40) : [];
 
       // Récupérer les détails du film (genres)
       const detailsRes = await fetch(
@@ -241,10 +242,10 @@ export default () => ({
         },
       } as any);
 
-      console.log(`✅ Linked: ${movie.title} (${actorIds.length} actors, ${genreIds.length} genres)`);
+      console.log(`Linked: ${movie.title} (${actorIds.length} actors, ${genreIds.length} genres)`);
       linkedCount++;
     } catch (err) {
-      console.error(`❌ Error linking movie "${movie.title}":`, err);
+      console.error(`Error linking movie "${movie.title}":`, err);
     }
   }
 
